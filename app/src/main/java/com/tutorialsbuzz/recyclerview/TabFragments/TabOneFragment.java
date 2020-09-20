@@ -1,11 +1,13 @@
 package com.tutorialsbuzz.recyclerview.TabFragments;
 
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.SearchView;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -70,21 +72,22 @@ public class TabOneFragment extends Fragment implements SearchView.OnQueryTextLi
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
         searchView.setOnQueryTextListener(this);
 
-        MenuItemCompat.setOnActionExpandListener(item,
-                new MenuItemCompat.OnActionExpandListener() {
-                    @Override
-                    public boolean onMenuItemActionCollapse(MenuItem item) {
-                        // Do something when collapsed
-                        adapter.setFilter(mCountryModel);
-                        return true; // Return true to collapse action view
-                    }
 
-                    @Override
-                    public boolean onMenuItemActionExpand(MenuItem item) {
-                        // Do something when expanded
-                        return true; // Return true to expand action view
-                    }
-                });
+        item.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                // Do something when collapsed
+                adapter.setFilter(mCountryModel);
+                return true; // Return true to collapse action view
+            }
+
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                // Do something when expanded
+                return true; // Return true to expand action view
+            }
+        });
+
     }
 
     @Override
@@ -99,7 +102,6 @@ public class TabOneFragment extends Fragment implements SearchView.OnQueryTextLi
         return false;
     }
 
-
     private List<CountryModel> filter(List<CountryModel> models, String query) {
         query = query.toLowerCase();
 
@@ -112,5 +114,4 @@ public class TabOneFragment extends Fragment implements SearchView.OnQueryTextLi
         }
         return filteredModelList;
     }
-
 }

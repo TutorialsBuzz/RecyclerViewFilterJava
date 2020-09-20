@@ -6,11 +6,9 @@ import androidx.appcompat.app.ActionBar;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import com.tutorialsbuzz.recyclerview.TabFragments.TabOneFragment;
 import com.tutorialsbuzz.recyclerview.TabFragments.TabThreeFragment;
 import com.tutorialsbuzz.recyclerview.TabFragments.TabTwoFragment;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,20 +27,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
 
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
-
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -51,8 +46,5 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new TabTwoFragment(), "Two");
         adapter.addFragment(new TabThreeFragment(), "Three");
         viewPager.setAdapter(adapter);
-
     }
-
-
 }

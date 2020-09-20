@@ -1,13 +1,9 @@
 package com.tutorialsbuzz.recyclerview.TabFragments;
 
-/**
- * Created by iFocus on 29-10-2015.
- */
 public class CountryModel {
 
     String name;
     String isocode;
-
 
     CountryModel(String name, String isocode){
         this.name=name;
